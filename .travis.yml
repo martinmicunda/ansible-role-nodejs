@@ -3,7 +3,7 @@ language: python
 python: "2.7"
 
 env:
-  - SITE="tests/main.yml -i 'localhost,'"
+  - SITE="-i inventory tests/main.yml"
 
 before_install:
  - sudo apt-get update -qq
@@ -36,17 +36,17 @@ script:
   - echo localhost > inventory
 
   # Check syntax
-  - ansible-playbook --syntax-check -i inventory tests/main.yml
+  - ansible-playbook --syntax-check $SITE
 
   # First run
-  - ansible-playbook -i inventory tests/main.yml --connection=local --sudo
+  - ansible-playbook $SITE --connection=local --sudo
 
   # Second run Idempotence test
   - >
-    ansible-playbook -i inventory tests/main.yml --connection=local --sudo
+    ansible-playbook $SITE --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+    && (echo 'Idempotence test: PASS' && exit 0)
+    || (echo 'Idempotence test: FAIL' && exit 1)
 
   - command -v nodejs || exit 1
   - command -v npm || exit 1
