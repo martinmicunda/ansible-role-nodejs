@@ -13,21 +13,40 @@ install:
   - pip install ansible>=1.7.0
 
 script:
+#  # Prepare tests
+#  - echo localhost > inventory
+#
+#  # Check syntax
+#  - "ansible-playbook $SITE --syntax-check"
+#
+#  # First run
+#  - ansible-playbook $SITE --connection=local -vvvv --sudo
+#
+#  # Second run Idempotence test
+#  - >
+#    ansible-playbook $SITE --connection=local
+#    | grep -q 'changed=0.*failed=0'
+#    && (echo 'Idempotence test: PASS' && exit 0)
+#    || (echo 'Idempotence test: FAIL' && exit 1)
+#
+#  - command -v nodejs || exit 1
+#  - command -v npm || exit 1
+
   # Prepare tests
   - echo localhost > inventory
 
   # Check syntax
-  - "ansible-playbook $SITE --syntax-check"
+  - ansible-playbook --syntax-check -i inventory tests/main.yml
 
   # First run
-  - ansible-playbook $SITE --connection=local -vvvv --sudo
+  - ansible-playbook -i inventory tests/main.yml --connection=local --sudo
 
   # Second run Idempotence test
   - >
-    ansible-playbook $SITE --connection=local
+    ansible-playbook -i inventory tests/main.yml --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: PASS' && exit 0)
-    || (echo 'Idempotence test: FAIL' && exit 1)
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
 
   - command -v nodejs || exit 1
   - command -v npm || exit 1

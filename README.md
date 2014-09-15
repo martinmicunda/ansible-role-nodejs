@@ -5,16 +5,16 @@ Ansible Node.js Role
 
 An ansible role for installing Node.js and NPM.
 
+Installation
+------------
+This role requires at least Ansible `v1.7.0`. To install it, run:
+
+    ansible-galaxy install martinmicunda.nodejs
+
 Requirements
 ------------
 
-#### Ansible
-
-It has been tested on Ansible 1.7 and above.
-
-#### Platforms
-
-Currently it's been developed for, and tested on Ubuntu.
+Currently it's been developed for, and tested on `Ubuntu`.
 
 Role Variables
 --------------
