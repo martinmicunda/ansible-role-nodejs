@@ -1,0 +1,33 @@
+---
+language: python
+python: "2.7"
+
+env:
+  - SITE="tests/main.yml -i 'localhost,'"
+
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq python-apt python-pycurl
+
+install:
+  - pip install ansible>=1.7.0
+
+script:
+  # Prepare tests
+  - echo localhost > inventory
+
+  # Check syntax
+  - "ansible-playbook $SITE --syntax-check"
+
+  # First run
+  - "ansible-playbook $SITE --connection=local -vvvv"
+
+  # Second run Idempotence test
+  - >
+    ansible-playbook $SITE --connection=local
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: PASS' && exit 0)
+    || (echo 'Idempotence test: FAIL' && exit 1)
+
+  - command -v nodejs || exit 1
+  - command -v npm || exit 1
