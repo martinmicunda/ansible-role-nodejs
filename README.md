@@ -9,7 +9,9 @@ Installation
 ------------
 This role requires at least Ansible `v1.7.0`. To install it, run:
 
-    ansible-galaxy install martinmicunda.nodejs
+```bash
+$ ansible-galaxy install martinmicunda.nodejs
+```
 
 Requirements
 ------------
