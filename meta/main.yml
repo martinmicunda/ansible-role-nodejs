@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Martin Micunda
-  description: Install the latest stable version of Nodejs and NPM.
+  description: Install the latest stable version of Node.js and NPM.
   license: MIT
   min_ansible_version: 1.7
 

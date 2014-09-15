@@ -1,7 +1,7 @@
 Ansible Node.js Role
 =========
 
-[![Build Status](https://secure.travis-ci.org/martinmicunda/ansible-role-nodejs.png)](http://travis-ci.org/martinmicunda/ansible-role-nodejs) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-mm.nodejs-blue.svg)](https://galaxy.ansible.com/list#/roles/1581) [![Platforms](http://img.shields.io/badge/platforms-ubuntu-orange.svg)](#)
+[![Build Status](https://secure.travis-ci.org/martinmicunda/ansible-role-nodejs.png)](http://travis-ci.org/martinmicunda/ansible-role-nodejs) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-martinmicunda.nodejs-blue.svg)](https://galaxy.ansible.com/list#/roles/1700) [![Platforms](http://img.shields.io/badge/platforms-ubuntu-orange.svg)](#)
 
 An ansible role for installing Node.js and NPM.
 
@@ -29,11 +29,11 @@ List of default variables available in the inventory:
 Example Playbook
 ----------------
 
-Add `mm.nodejs` to your roles and overwrite default vars (optional) in your playbook file.
+Add `martinmicunda.nodejs` to your roles and overwrite default vars (optional) in your playbook file.
 
     - hosts: all
       roles:
-         - role: mm.nodejs
+         - role: martinmicunda.nodejs
       vars:
          - nodejs_version: "0.10.31"  
 

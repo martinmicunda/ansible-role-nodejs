@@ -20,7 +20,7 @@ script:
   - "ansible-playbook $SITE --syntax-check"
 
   # First run
-  - "ansible-playbook $SITE --connection=local -vvvv --sudo"
+  - ansible-playbook $SITE --connection=local -vvvv --sudo
 
   # Second run Idempotence test
   - >
